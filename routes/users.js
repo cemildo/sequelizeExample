@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { user } = require('../database');
+const { User } = require('../database');
 
 
-router.get('/all', function(req, res, next) {
-  user.findAll().then(users => res.json(users));
+router.get('/', function(req, res, next) {
+  User.findAll().then(users => res.json(users));
 });
 
 router.post('/', function(req, res, next) {
-  user.create({ name: 'cemil'})
+  User.create({ name: 'cemil'})
         .then(user => res.json(user));
 });
 
