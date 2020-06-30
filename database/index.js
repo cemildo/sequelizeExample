@@ -31,6 +31,4 @@ class Database {
 }
 
 const database = new Database();
-console.log(database.models);
-
 module.exports = { ...database.models };
