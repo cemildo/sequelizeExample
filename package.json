@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "export $(cat .env | xargs) && nodemon node ./bin/www",
+    "start": "cross-env NODE_ENV=development && nodemon node ./bin/www",
     "sqlz:migrate": "./node_modules/.bin/sequelize db:migrate",
     "sqlz:undo": "./node_modules/.bin/sequelize db:migrate:undo",
     "sqlz:new": "./node_modules/.bin/sequelize migration:create",
@@ -19,5 +19,8 @@
     "nodemon": "^2.0.4",
     "sequelize": "^6.2.3",
     "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }
