@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  User.create({ name: 'cemil'})
+  User.create({ name: 'ahmet'})
         .then(user => res.json(user));
 });
 
