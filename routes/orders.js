@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { User, Address } = require('../database');
+const { User, Address, Orders } = require('../database');
 
 
 router.get('/', function(req, res, next) {
-  User.findAll({
-    include: [ Address ]
+  Orders.findAll({
+
   }).then(users => res.json(users));
 });
 
 router.post('/user', function(req, res, next) {
+  // validation check
   User.create(req.body).then(user => res.json(user));
 });
 

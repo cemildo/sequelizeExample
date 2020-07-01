@@ -13,13 +13,14 @@ class Database {
         if(nodeEnv) {
             const dbConfig = config[nodeEnv];
             const sequelize = new Sequelize(dbConfig);
+
             const dbModels = models.reduce((acc, curr) => {
                 const model = curr(sequelize);
                 acc[model.name] = model;
                 return acc;
             }, {});
             this.models = sequelize.models = dbModels;
-             
+
             sequelize.sync({ force: process.env.NODE_ENV === 'test' })
                 .then(() => {
                     console.log(`Database & tables created!`)
@@ -31,4 +32,9 @@ class Database {
 }
 
 const database = new Database();
+const {Address, User} = database.models;
+/* Associations*/
+Address.belongsTo(User);
+User.hasMany(Address);
+
 module.exports = { ...database.models };
