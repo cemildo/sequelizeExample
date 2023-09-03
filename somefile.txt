@@ -1,1 +1,2 @@
-Soem other text other than the one from other branch
+Hello world!
+
